@@ -1,0 +1,24 @@
+flowchart TD
+    A["Start: Draft RPS screening"] --> B{"Distance to surface water < 50 m?"}
+    B -->|Yes| R1["RPS FAIL\nWithin 50 m of surface water\nFull Schedule 33 consent"]
+    B -->|No| C{"GWDTE or designated site\nwithin 500 m?"}
+
+    C -->|Yes| R2["RPS FAIL\nWithin 500 m of GWDTE / designated site"]
+    C -->|No| D{"Landfill or contamination present?\nLandfill or other contamination identified"}
+
+    D -->|Yes| R3["RPS FAIL\nBrownfield / contamination present"]
+    D -->|No| E{"Bentonite in SPZ2 or SPZ3?\nSupport fluid is bentonite and site in SPZ2/3"}
+
+    E -->|Yes| R4["RPS FAIL\nBentonite use in SPZ2/3\nExcluded under draft RPS"]
+    E -->|No| F{"Flood Zone 3 works longer than 28 days?\nWorks in FZ3 for more than 28 days"}
+
+    F -->|Yes| R5["RPS FAIL\nFlood Zone 3 works > 28 days"]
+    F -->|No| G{"SPZ1?\nSite within SPZ1?"}
+
+    G -->|Yes| R6["RPS FAIL\nSPZ1 – specific consent required"]
+    G -->|No| ROK["RPS ELIGIBLE\n(subject to EA agreement)"]
+
+    classDef fail fill:#fde2e1,stroke:#8b2420,color:#8b2420;
+    classDef ok fill:#dff5e3,stroke:#145c22,color:#145c22;
+    class R1,R2,R3,R4,R5,R6 fail;
+    class ROK ok;
